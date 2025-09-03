@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brainrot Site</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+    .blink { animation: blink 1s infinite; }
+
+    @keyframes pulse-emoji {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+    }
+    .pulse { display: inline-block; animation: pulse-emoji 1s infinite; }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-purple-200 via-pink-100 to-yellow-100 text-gray-900">
+
+  <!-- Hero -->
+  <section class="text-center py-16 px-6">
+    <h1 class="text-5xl font-extrabold text-pink-600 animate-bounce">💀 Brainrot Central 🔥</h1>
+    <p class="mt-4 text-lg text-gray-700">Where memes meet chaos — stay sigma, stay goofy 🗿</p>
+    <a href="#chat" class="mt-6 inline-block bg-pink-500 text-white px-6 py-3 rounded-full shadow hover:bg-pink-600 transition">Chat Now</a>
+  </section>
+
+  <!-- Main Content Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto px-6 mt-10">
+    <!-- Left Image -->
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="images/main.png" alt="Main Meme" class="w-full h-[600px] object-cover">
+    </div>
+
+    <!-- Right Emojis -->
+    <div class="bg-gray-100 rounded-2xl p-6 h-[600px]">
+      <h2 class="text-2xl font-bold text-center mb-6">Pick Your Vibe 🤪</h2>
+      <div class="grid grid-rows-2 gap-4 h-full">
+        
+        <!-- Row 1 -->
+        <div class="grid grid-cols-4 gap-4">
+          <div class="bg-white h-[120px] rounded-2xl flex flex-col items-center justify-center shadow hover:border-2 hover:border-pink-500 transition">
+            <span class="text-4xl hover:scale-150 transition">💀</span>
+            <span class="text-sm mt-1">Skull</span>
+          </div>
+          <div class="bg-white h-[120px] rounded-2xl flex flex-col items-center justify-center shadow hover:border-2 hover:border-pink-500 transition">
+            <span class="text-4xl hover:scale-150 transition">🔥</span>
+            <span class="text-sm mt-1">Fire</span>
+          </div>
+          <div class="bg-white h-[120px] rounded-2xl flex flex-col items-center justify-center shadow hover:border-2 hover:border-pink-500 transition">
+            <span class="text-4xl hover:scale-150 transition">😭</span>
+            <span class="text-sm mt-1">Cry</span>
+          </div>
+          <div class="bg-white h-[120px] rounded-2xl flex flex-col items-center justify-center shadow hover:border-2 hover:border-pink-500 transition">
+            <span class="text-4xl hover:scale-150 transition">🗿</span>
+            <span class="text-sm mt-1">Moai</span>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="grid grid-cols-4 gap-4">
+          <div class="bg-white h-[120px] rounded-2xl flex flex-col items-center justify-center shadow hover:border-2 hover:border-pink-500 transition">
+            <span class="text-4xl hover:scale-150 transition">👽</span>
+            <span class="text-sm mt-1">Alien</span>
+          </div>
+          <div class="bg-white h-[120px] rounded-2xl flex flex-col items-center justify-center shadow hover:border-2 hover:border-pink-500 transition">
+            <span class="text-4xl hover:scale-150 transition">😳</span>
+            <span class="text-sm mt-1">Shy</span>
+          </div>
+          <div class="bg-white h-[120px] rounded-2xl flex flex-col items-center justify-center shadow hover:border-2 hover:border-pink-500 transition">
+            <span class="text-4xl hover:scale-150 transition">🤯</span>
+            <span class="text-sm mt-1">Mindblown</span>
+          </div>
+          <div class="bg-white h-[120px] rounded-2xl flex flex-col items-center justify-center shadow hover:border-2 hover:border-pink-500 transition">
+            <span class="text-4xl hover:scale-150 transition">🤡</span>
+            <span class="text-sm mt-1">Clown</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbox -->
+  <section id="chat" class="max-w-4xl mx-auto mt-16 px-6">
+    <h2 class="text-center text-3xl font-extrabold text-purple-600 mb-6">💬 Live Brainrot Chat</h2>
+    <div class="bg-white rounded-3xl shadow-2xl flex flex-col h-[500px] border-8 border-yellow-400">
+      <div id="chatbox" class="flex-1 p-4 overflow-y-auto space-y-4">
+        <div class="text-center text-lg font-bold text-pink-600 animate-bounce">💀 WASSUP RIZZLORD 🔥🗿</div>
+      </div>
+      <div class="border-t-8 border-yellow-400 p-3 bg-gradient-to-r from-pink-200 via-yellow-200 to-purple-200 rounded-b-3xl">
+        <input id="chatInput" type="text" placeholder="Type ur goofy msg 👉" class="w-full border-4 border-purple-500 rounded-full px-4 py-2 text-lg focus:outline-none focus:ring-4 focus:ring-pink-400">
+      </div>
+    </div>
+  </section>
+
+  <!-- Links -->
+  <section class="bg-gray-900 py-16 mt-20 text-center text-white">
+    <h2 class="text-lg font-semibold">Check out the links below for your reference:</h2>
+    <div class="mt-6 flex justify-center gap-x-10">
+      <a href="https://dexscreener.com/solana/havduueqisqbmmhucmjr9xj9v7c1v8adthrml5pvc2qk">
+        <img src="images/dexscreener.png" class="h-12 w-auto object-contain" alt="Dexscreener">
+      </a>
+      <a href="#">
+        <img src="https://img.freepik.com/premium-vector/x-twitter-logo-social-media-app-button_197792-9306.jpg" class="h-12 w-auto object-contain" alt="Twitter">
+      </a>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script>
+    $(document).ready(function () {
+      const replies = [
+        "<span class='blink'>🔥</span> SKIBIDI TOILET 🚽<span class='pulse'>💀</span>",
+        "RIZZ GOD ALERT <span class='pulse'>😩</span><span class='blink'>👑</span>",
+        "NPC detected 🤖<span class='blink'>🗿</span>",
+        "GYATT <span class='pulse'>🥵</span><span class='blink'>🍑</span>",
+        "Sigma grindset 💼<span class='pulse'>🦍</span>",
+        "Fanum tax incoming <span class='blink'>🤑</span><span class='pulse'>💸</span>",
+        "Ohio moment 🌽<span class='blink'>🐟</span>",
+        "GOOFY AHHH <span class='pulse'>🤡</span><span class='blink'>😂</span>",
+        "W rizz vs L take <span class='pulse'>🤔</span><span class='blink'>⚡</span>"
+      ];
+
+      function addMessage(text, sender) {
+        const messageClass = sender === "user" 
+          ? "bg-pink-500 text-white self-end rounded-br-none"
+          : "bg-green-500 text-white self-start rounded-bl-none";
+        
+        $("#chatbox").append(`
+          <div class="flex ${sender === 'user' ? 'justify-end' : 'justify-start'}">
+            <div class="px-4 py-2 rounded-2xl max-w-[75%] shadow text-lg font-bold ${messageClass}">
+              ${text}
+            </div>
+          </div>
+        `);
+        $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+      }
+
+      $("#chatInput").keypress(function (e) {
+        if (e.which === 13 && this.value.trim() !== "") {
+          const userText = this.value;
+          addMessage("👤 " + userText, "user");
+          this.value = "";
+          setTimeout(() => {
+            const botReply = "🤖 " + replies[Math.floor(Math.random() * replies.length)];
+            addMessage(botReply, "bot");
+          }, 600);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

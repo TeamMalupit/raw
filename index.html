@@ -3,166 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>raw site</title>
+  <title>Pokémon CLI Site</title>
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
+<header class="bg-white shadow-md">
+  <nav class="max-w-6xl mx-auto flex items-center p-4">
+    <!-- CTA Buttons aligned to right -->
+    <div class="ml-auto flex gap-3">
+      <a href="#" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
+        🚀 Buy $TEAMROCKET
+      </a>
+      <a href="#" class="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition">
+        🎮 Equip Avatar
+      </a>
+      <a href="#" class="px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition">
+        👥 Join Community
+      </a>
+    </div>
+  </nav>
+</header>
 <style>
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0; }
-    }
-    .blink {
-      animation: blink 1s infinite;
-    }
+  body {
+    background: url("https://img-cdn.tnwcdn.com/image?fit=1280%2C720&url=https%3A%2F%2Fcdn0.tnwcdn.com%2Fwp-content%2Fblogs.dir%2F1%2Ffiles%2F2018%2F06%2FPoketoshi.png&signature=80c3137b022e0ff3cc0244e40040ac9c") no-repeat center center fixed;
+    background-size: cover;
+  }
 
-    @keyframes pulse-emoji {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.4); }
-    }
-    .pulse {
-      display: inline-block;
-      animation: pulse-emoji 1s infinite;
-    }
-  </style>
-<body class="bg-gray-100 text-gray-800">
+  /* CLI Chatbox */
+  #chatbox {
+    font-family: "Courier New", monospace;
+    background-color: #111;
+    color: #00ff00;
+  }
 
-  <!-- Navbar -->
-  <header class="bg-white shadow-md">
-    <!-- <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
-      <h1 class="text-2xl font-bold text-blue-600">MySite</h1>
-      <ul class="flex gap-6">
-        <li><a href="#" class="hover:text-blue-600">Home</a></li>
-        <li><a href="#" class="hover:text-blue-600">About</a></li>
-        <li><a href="#" class="hover:text-blue-600">Services</a></li>
-        <li><a href="#" class="hover:text-blue-600">Contact</a></li>
-      </ul>
-    </nav> -->
-  </header>
+  .cli-message {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .user-text {
+    color: #00ffff;
+  }
+
+  .bot-text {
+    color: #00ff00;
+  }
+
+  /* Blinking cursor style */
+  .cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: #00ff00;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+</style>
+<body class="text-gray-800">
 
   <!-- Hero Section -->
-  <section class="text-black text-center py-20">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4">Title Here</h2>
-    <p class="text-lg md:text-xl mb-6">Lorem ipsum</p>
-    <a href="#services" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold shadow hover:bg-gray-200 transition">Get Started</a>
+  <section class="text-center py-20 bg-black bg-opacity-60 rounded-3xl max-w-4xl mx-auto mt-10">
+    <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4">⚡ A Wild Pump Appeared!  ⚡</h2>
+    <p class="text-lg md:text-xl text-white">Join Team Rocket’s degen takeover. Catch the pump, flex the loot, blast off every candle.</p>
   </section>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto px-6 mt-8">
     <!-- Column 1 -->
     <div class="bg-white h-[600px] flex items-center justify-center text-white text-2xl font-bold rounded-[20px]">
-      <img src="images/main.png" class="rounded-[20px]" alt="">
+      <img src="images/pk1.webp" class="rounded-[20px] h-[600px]" alt="">
     </div>
   
-    <!-- Column 2 -->
     <div class="bg-gray-200 h-[600px] p-6 rounded-[20px]">
-        <div class="grid grid-rows-2 gap-2">
-          
-          <!-- Row 1 -->
-          <div class="grid grid-cols-4 gap-2">
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">💀</span>
-              <span class="text-sm mt-1">Skull</span>
-            </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">🔥</span>
-              <span class="text-sm mt-1">Fire</span>
-            </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">😭</span>
-              <span class="text-sm mt-1">Cry</span>
-            </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">🗿</span>
-              <span class="text-sm mt-1">Moai</span>
-            </div>
+      <div class="grid grid-rows-2 gap-2">
+    
+        <!-- Row 1 -->
+        <div class="grid grid-cols-4 gap-2">
+          <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" class="h-[80px] w-[80px]" alt="Pikachu">
+            <span class="text-sm mt-1">Pikachu</span>
           </div>
-          
-          <!-- Row 2 -->
-          <div class="grid grid-cols-4 gap-2">
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">👽</span>
-              <span class="text-sm mt-1">Alien</span>
-            </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">😳</span>
-              <span class="text-sm mt-1">Shy</span>
-            </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">🤯</span>
-              <span class="text-sm mt-1">Mindblown</span>
-            </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">🤡</span>
-              <span class="text-sm mt-1">Clown</span>
-            </div>
+          <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" class="h-[80px] w-[80px]" alt="Charmander">
+            <span class="text-sm mt-1">Charmander</span>
           </div>
-          
-      
+          <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" class="h-[80px] w-[80px]" alt="Bulbasaur">
+            <span class="text-sm mt-1">Bulbasaur</span>
+          </div>
+          <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" class="h-[80px] w-[80px]" alt="Squirtle">
+            <span class="text-sm mt-1">Squirtle</span>
+          </div>
         </div>
-      </div>
-  </div>
-
-  <!-- Services Section -->
-  <section id="services" class="max-w-6xl mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center mb-12">Our Services</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-2">Web Development</h4>
-        <p class="text-gray-600">Build fast, responsive, and modern websites using the latest tech.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-2">UI/UX Design</h4>
-        <p class="text-gray-600">Crafting intuitive and beautiful user experiences.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-2">SEO Optimization</h4>
-        <p class="text-gray-600">Improve visibility and ranking with our SEO strategies.</p>
+    
+        <!-- Row 2 -->
+        <div class="grid grid-cols-4 gap-2">
+          <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png" class="h-[80px] w-[80px]" alt="Jigglypuff">
+            <span class="text-sm mt-1">Jigglypuff</span>
+          </div>
+          <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png" class="h-[80px] w-[80px]" alt="Eevee">
+            <span class="text-sm mt-1">Eevee</span>
+          </div>
+          <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" class="h-[80px] w-[80px]" alt="Mewtwo">
+            <span class="text-sm mt-1">Mewtwo</span>
+          </div>
+          <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png" class="h-[80px] w-[80px]" alt="Meowth">
+            <span class="text-sm mt-1">Meowth</span>
+          </div>
+        </div>
+    
       </div>
     </div>
+    
+  </div>
+
+  <!-- New Grid 2x2 with 300x300 boxes -->
+  <div class="flex justify-center">
+    <div class="grid grid-cols-2 gap-4 mt-4">
+      <div class="bg-gray-300 h-[300px] w-[250px] rounded-[20px] flex flex-col items-center justify-center">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu" class="h-[100px] w-[100px] transition-transform duration-300 hover:scale-125">
+        <span class="text-lg mt-3">Pikachu</span>
+      </div>
+      <div class="bg-gray-300 h-[300px] w-[250px] rounded-[20px] flex flex-col items-center justify-center">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="Charmander" class="h-[100px] w-[100px] transition-transform duration-300 hover:scale-125">
+        <span class="text-lg mt-3">Charmander</span>
+      </div>
+      <div class="bg-gray-300 h-[300px] w-[250px] rounded-[20px] flex flex-col items-center justify-center">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Bulbasaur" class="h-[100px] w-[100px] transition-transform duration-300 hover:scale-125">
+        <span class="text-lg mt-3">Bulbasaur</span>
+      </div>
+      <div class="bg-gray-300 h-[300px] w-[250px] rounded-[20px] flex flex-col items-center justify-center">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle" class="h-[100px] w-[100px] transition-transform duration-300 hover:scale-125">
+        <span class="text-lg mt-3">Squirtle</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="text-center py-20 bg-black bg-opacity-60 rounded-3xl max-w-4xl mx-auto mt-10">
+    <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4">⚡ Rocket HQ Comms  ⚡</h2>
+    <p class="text-lg md:text-xl text-white">Drop your pump call, meme, or battle move. Prepare for trouble, pump for double.</p>
   </section>
 
-  <div class="bg-gray-800 py-24 sm:py-32">
-    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-12 px-6 sm:gap-y-16 lg:grid-cols-2 lg:px-8">
-      <article class="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-lg">
-        <!-- <time datetime="2020-03-16" class="block text-sm/6 text-gray-600">Mar 16, 2020</time> -->
-        <h2 id="featured-post" class="mt-4 text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-            <div class="text-center text-3xl font-extrabold text-white animate-bounce">
-                💀📱 SKIBIDI OHIO RIZZ ALERT 🗿🔥  
-                <span class="blink">GYATT DETECTED 👉🍑</span>  
-                NPCs BEWARE 🤖💸
-              </div>
-        </h2>
-        <p class="mt-4 text-lg/8 text-white">Libero neque aenean tincidunt nec consequat tempor. Viverra odio id velit adipiscing id. Nisi vestibulum orci eget bibendum dictum. Velit viverra posuere vulputate volutpat nunc. Nunc netus sit faucibus.</p>
-        <div class="mt-4 flex flex-col justify-between gap-6 sm:mt-8 sm:flex-row-reverse sm:gap-8 lg:mt-4 lg:flex-col">
-          <div class="flex">
-            <!-- <a href="#" aria-describedby="featured-post" class="text-sm/6 font-semibold text-indigo-600 hover:text-indigo-500">Continue reading <span aria-hidden="true">&rarr;</span></a> -->
-          </div>
-          <!-- <div class="flex lg:border-t lg:border-gray-900/10 lg:pt-8">
-            <a href="#" class="flex gap-x-2.5 text-sm/6 font-semibold text-gray-900">
-              <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-6 flex-none rounded-full bg-gray-50" />
-              Michael Foster
-            </a>
-          </div> -->
-        </div>
-      </article>
-      <div class="mx-auto w-full max-w-2xl border-t border-gray-900/10 pt-12 sm:pt-16 lg:mx-0 lg:max-w-none lg:border-t-0 lg:pt-0">
-        <div class="-my-12 divide-y divide-gray-900/10">
-          
-        <div class="w-full max-w-md bg-white rounded-3xl shadow-2xl flex flex-col h-[550px] border-8 border-pink-500">
-            <!-- Chat Messages -->
-            <div id="chatbox" class="flex-1 p-4 overflow-y-auto space-y-4">
-                <div class="text-center text-xl text-pink-600 font-extrabold animate-bounce">💀 WASSUP RIZZLORD 🔥🗿</div>
-            </div>
-        
-            <!-- Input -->
-            <div class="border-t-8 border-pink-500 p-3 bg-gradient-to-r from-yellow-200 via-pink-200 to-purple-200 rounded-b-3xl">
-                <input id="chatInput" type="text" placeholder="Drop ur gyatt here 👉" 
-                class="w-full border-4 border-green-500 rounded-full px-4 py-2 focus:outline-none focus:ring-4 focus:ring-purple-500 text-lg bg-white">
-            </div>
-            
-        </div>
-        </div>
+
+  <!-- Chat Section -->
+  <div class="mx-auto mt-16 w-full max-w-2xl rounded-lg shadow-2xl overflow-hidden border-4 border-yellow-400">
+    <!-- CLI Chat Window -->
+    <div id="chatbox" class="flex-1 p-4 overflow-y-auto h-[400px] space-y-2">
+      <div class="cli-message bot-text">PokeShell v1.0 initialized...</div>
+      <div class="cli-message bot-text">Type <span class="text-yellow-400">help</span> to see available commands.</div>
+    </div>
+
+    <!-- Input -->
+    <div class="bg-black border-t border-yellow-400 p-2">
+      <div class="flex items-center">
+        <span class="text-green-400 font-mono">Type your degen move ⚡👉</span>
+        <input id="chatInput" type="text" 
+          class="ml-2 flex-1 bg-black text-green-400 font-mono outline-none" 
+          autofocus>
+        <span class="cursor"></span>
       </div>
     </div>
   </div>
@@ -193,28 +201,19 @@
   <script>
     $(document).ready(function () {
       const replies = [
-        "<span class='blink'>🔥</span> SKIBIDI TOILET 🚽<span class='pulse'>💀</span>",
-        "RIZZ GOD ALERT <span class='pulse'>😩</span><span class='blink'>👑</span>",
-        "NPC detected 🤖<span class='blink'>🗿</span>",
-        "GYATT <span class='pulse'>🥵</span><span class='blink'>🍑</span>",
-        "Sigma grindset 💼<span class='pulse'>🦍</span>",
-        "Fanum tax incoming <span class='blink'>🤑</span><span class='pulse'>💸</span>",
-        "Ohio moment 🌽<span class='blink'>🐟</span>",
-        "GOOFY AHHH <span class='pulse'>🤡</span><span class='blink'>😂</span>",
-        "W rizz vs L take <span class='pulse'>🤔</span><span class='blink'>⚡</span>"
+        "Pikachu used ⚡ Thunderbolt! It's super effective!",
+        "Charizard unleashed 🔥 Flamethrower!",
+        "Snorlax is sleeping... 😴",
+        "Mewtwo appeared 👾 — do you want to fight or run?",
+        "Bulbasaur used 🌱 Vine Whip!",
+        "Trainer gained 50 XP ⭐",
+        "A wild Magikarp appeared... splash... 💦"
       ];
 
       function addMessage(text, sender) {
-        const messageClass = sender === "user" 
-          ? "bg-pink-500 text-white self-end rounded-br-none"
-          : "bg-green-500 text-white self-start rounded-bl-none";
-        
+        const messageClass = sender === "user" ? "user-text" : "bot-text";
         $("#chatbox").append(`
-          <div class="flex ${sender === 'user' ? 'justify-end' : 'justify-start'}">
-            <div class="px-4 py-2 rounded-2xl max-w-[75%] shadow-lg text-lg font-bold ${messageClass}">
-              ${text}
-            </div>
-          </div>
+          <div class="cli-message ${messageClass}">${text}</div>
         `);
         $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
       }
@@ -222,23 +221,17 @@
       $("#chatInput").keypress(function (e) {
         if (e.which === 13 && this.value.trim() !== "") {
           const userText = this.value;
-          addMessage("👤 " + userText, "user");
+          addMessage("trainer@pokeworld:~$ " + userText, "user");
           this.value = "";
 
-          // Bot reply after a delay
+          // Bot reply after delay
           setTimeout(() => {
-            const botReply = "🤖 " + replies[Math.floor(Math.random() * replies.length)];
+            const botReply = replies[Math.floor(Math.random() * replies.length)];
             addMessage(botReply, "bot");
           }, 600);
         }
       });
     });
   </script>
-
-  <!-- Footer -->
-  <!-- <footer class="bg-gray-800 text-gray-300 text-center py-6">
-    <p>&copy; 2025 MySite. All rights reserved.</p>
-  </footer> -->
-
 </body>
 </html>
