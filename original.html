@@ -9,6 +9,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
+  
     @keyframes blink {
       0%, 50%, 100% { opacity: 1; }
       25%, 75% { opacity: 0; }
@@ -30,16 +31,57 @@
 
   <!-- Navbar -->
   <header class="bg-white shadow-md">
-    <!-- <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
-      <h1 class="text-2xl font-bold text-blue-600">MySite</h1>
-      <ul class="flex gap-6">
-        <li><a href="#" class="hover:text-blue-600">Home</a></li>
-        <li><a href="#" class="hover:text-blue-600">About</a></li>
-        <li><a href="#" class="hover:text-blue-600">Services</a></li>
-        <li><a href="#" class="hover:text-blue-600">Contact</a></li>
-      </ul>
-    </nav> -->
+    <nav class="max-w-6xl mx-auto flex items-center p-4">
+      <!-- CTA Buttons aligned to right -->
+      <div class="ml-auto flex gap-3">
+        <a href="#" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
+          🚀 Buy TEAMROCKET
+        </a>
+        <a href="#" class="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition">
+          🎮 Equip Avatar
+        </a>
+        <a href="#" class="px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition">
+          👥 Join Community
+        </a>
+        <a href="#" id="walletBtn" class="px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition">
+          👛 Wallet
+        </a>
+        
+      </div>
+    </nav>
   </header>
+
+   <!-- Wallet Modal -->
+<div id="walletModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-lg w-96 p-6 relative">
+    <!-- Close Button -->
+    <button id="closeWallet" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl">✖</button>
+    
+    <h2 class="text-xl font-bold mb-4">Select a Wallet</h2>
+    
+    <!-- Wallet List -->
+    <ul id="walletList" class="space-y-3">
+      <li class="wallet-option p-3 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer">🦊 MetaMask</li>
+      <li class="wallet-option p-3 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer">💎 Trust Wallet</li>
+      <li class="wallet-option p-3 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer">🌐 Coinbase Wallet</li>
+      <li class="wallet-option p-3 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer">🔑 Phantom</li>
+      <li class="wallet-option p-3 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer">🐼 Binance Wallet</li>
+      <li class="wallet-option p-3 rounded-lg bg-gray-100 hover:bg-gray-200 cursor-pointer">⚡ Other Wallet</li>
+    </ul>
+
+    <!-- Loading & QR Container -->
+    <div id="walletLoading" class="hidden text-center py-6">
+      <div class="animate-spin rounded-full h-12 w-12 border-4 border-purple-600 border-t-transparent mx-auto"></div>
+      <p class="mt-3 text-gray-600">Connecting...</p>
+    </div>
+
+    <div id="walletQRCode" class="hidden text-center py-6">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=dummy-wallet" 
+           alt="Dummy QR Code" class="mx-auto rounded-lg border p-2">
+      <p class="mt-3 text-gray-700">Scan this QR to connect</p>
+    </div>
+  </div>
+</div>
 
   <!-- Hero Section -->
   <section class="text-black text-center py-20">
@@ -49,58 +91,71 @@
   </section>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto px-6 mt-8">
-    <!-- Column 1 -->
-    <div class="bg-white h-[600px] flex items-center justify-center text-white text-2xl font-bold rounded-[20px]">
-      <img src="images/main.png" class="rounded-[20px]" alt="">
-    </div>
   
-    <!-- Column 2 -->
-    <div class="bg-gray-200 h-[600px] p-6 rounded-[20px]">
+    <!-- Column 1 -->
+    <div id="displayArea" 
+      class="relative bg-white h-[600px] text-2xl font-bold rounded-[20px] overflow-hidden bg-center bg-no-repeat bg-contain"
+      style="background-image: url('images/main.png');">
+    </div>
+    
+      <!-- Column 2 -->
+      <div class="bg-gray-200 h-[600px] p-6 rounded-[20px]">
         <div class="grid grid-rows-2 gap-2">
           
           <!-- Row 1 -->
           <div class="grid grid-cols-4 gap-2">
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">💀</span>
+            <div class="emoji-box bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center cursor-pointer hover:border-2 hover:border-gray-500 transition-all duration-300" data-emoji="💀">
+              <span class="text-3xl hover:scale-150 transition-transform duration-300">💀</span>
               <span class="text-sm mt-1">Skull</span>
             </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">🔥</span>
+            <div class="emoji-box bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center cursor-pointer hover:border-2 hover:border-gray-500 transition-all duration-300" data-emoji="🔥">
+              <span class="text-3xl hover:scale-150 transition-transform duration-300">🔥</span>
               <span class="text-sm mt-1">Fire</span>
             </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">😭</span>
+            <div class="emoji-box bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center cursor-pointer hover:border-2 hover:border-gray-500 transition-all duration-300" data-emoji="😭">
+              <span class="text-3xl hover:scale-150 transition-transform duration-300">😭</span>
               <span class="text-sm mt-1">Cry</span>
             </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">🗿</span>
+            <div class="emoji-box bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center cursor-pointer hover:border-2 hover:border-gray-500 transition-all duration-300" data-emoji="🗿">
+              <span class="text-3xl hover:scale-150 transition-transform duration-300">🗿</span>
               <span class="text-sm mt-1">Moai</span>
             </div>
           </div>
-          
+    
           <!-- Row 2 -->
           <div class="grid grid-cols-4 gap-2">
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">👽</span>
+            <div class="emoji-box bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center cursor-pointer hover:border-2 hover:border-gray-500 transition-all duration-300" data-emoji="👽">
+              <span class="text-3xl hover:scale-150 transition-transform duration-300">👽</span>
               <span class="text-sm mt-1">Alien</span>
             </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">😳</span>
+            <div class="emoji-box bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center cursor-pointer hover:border-2 hover:border-gray-500 transition-all duration-300" data-emoji="😳">
+              <span class="text-3xl hover:scale-150 transition-transform duration-300">😳</span>
               <span class="text-sm mt-1">Shy</span>
             </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">🤯</span>
+            <div class="emoji-box bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center cursor-pointer hover:border-2 hover:border-gray-500 transition-all duration-300" data-emoji="🤯">
+              <span class="text-3xl hover:scale-150 transition-transform duration-300">🤯</span>
               <span class="text-sm mt-1">Mindblown</span>
             </div>
-            <div class="bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center transition-all duration-300 hover:border-2 hover:border-gray-500">
-              <span class="text-3xl transition-transform duration-300 hover:scale-150">🤡</span>
+            <div class="emoji-box bg-gray-300 h-[100px] rounded-[20px] flex flex-col items-center justify-center cursor-pointer hover:border-2 hover:border-gray-500 transition-all duration-300" data-emoji="🤡">
+              <span class="text-3xl hover:scale-150 transition-transform duration-300">🤡</span>
               <span class="text-sm mt-1">Clown</span>
             </div>
+            
+
           </div>
-          
-      
+
+          <!-- Reset Button -->
+          <div class="mt-4">
+            <button id="resetBtn" class="px-4 py-2 bg-red-500 text-white rounded-[10px] hover:bg-red-600">
+              Reset Emojis
+            </button>
+          </div>
         </div>
       </div>
+    </div>
+
+    
+
   </div>
 
   <!-- Services Section -->
@@ -186,9 +241,17 @@
              src="https://img.freepik.com/premium-vector/x-twitter-logo-social-media-app-button_197792-9306.jpg"
              alt="Reform"
              class="h-12 w-auto object-contain" />
+        <img width="158" height="48"
+        src="https://img.freepik.com/premium-vector/x-twitter-logo-social-media-app-button_197792-9306.jpg"
+        alt="Reform"
+        class="h-12 w-auto object-contain" />
       </div>
     </div>
   </div>
+
+
+
+
 
   <script>
     $(document).ready(function () {
@@ -234,6 +297,72 @@
       });
     });
   </script>
+  
+
+
+  <script>
+  $(document).ready(function(){
+    // When emoji box is clicked
+    $(".emoji-box").on("click", function(){
+      let emoji = $(this).data("emoji");
+      let displayArea = $("#displayArea");
+
+      // Random positions inside the box (with 200px offset)
+      let areaWidth = displayArea.width() - 150;
+      let areaHeight = displayArea.height() - 150;
+      let randomLeft = Math.floor(Math.random() * areaWidth);
+      let randomTop = Math.floor(Math.random() * (areaHeight - 200)) + 200;
+
+      // Add emoji at random position
+      displayArea.append(
+        '<span class="absolute text-[150px]" style="top:' + randomTop + 'px; left:' + randomLeft + 'px;">' + emoji + '</span>'
+      );
+    });
+
+    // Reset button clears emojis only (keeps background)
+    $("#resetBtn").on("click", function(){
+      $("#displayArea").empty(); // removes all appended emojis
+    });
+  });
+</script>
+
+
+
+
+<script>
+  $(document).ready(function(){
+  // Open modal
+  $("#walletBtn").on("click", function(e){
+    e.preventDefault();
+    $("#walletModal").removeClass("hidden").addClass("flex");
+    $("#walletList").show();          // show wallets
+    $("#walletLoading").hide();       // hide loader
+    $("#walletQRCode").hide();        // hide QR
+  });
+
+  // Close modal
+  $("#closeWallet, #walletModal").on("click", function(e){
+    if (e.target.id === "walletModal" || e.target.id === "closeWallet") {
+      $("#walletModal").addClass("hidden").removeClass("flex");
+    }
+  });
+
+  // Wallet selection
+  $(".wallet-option").on("click", function(){
+    // Hide wallet list, show loader
+    $("#walletList").hide();
+    $("#walletLoading").show();
+    $("#walletQRCode").hide();
+
+    // After 5 secs -> show QR code
+    setTimeout(function(){
+      $("#walletLoading").hide();
+      $("#walletQRCode").show();
+    }, 5000);
+  });
+});
+
+</script>
   
 
   <!-- Footer -->
