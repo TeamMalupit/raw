@@ -13,7 +13,7 @@
   <nav class="max-w-6xl mx-auto flex items-center p-4">
     <!-- CTA Buttons aligned to right -->
     <div class="ml-auto flex gap-3">
-      <a href="#" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
+      <a href="https://pump.fun/coin/DXjJwpwzRZkkYNk1JDJmsBbJxwQkGRgHTT4kHbbbpump" class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
         🚀 Buy $TEAMROCKET
       </a>
       <a href="#" class="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition">
@@ -229,9 +229,14 @@
 
   <div class="bg-white py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <h2 class="text-center text-lg/8 font-semibold text-gray-900">
-        CA: {FILL IN THE BLANKS}
-      </h2>
+      <div class="flex items-center space-x-2 bg-white shadow-md p-3 rounded-lg">
+        <!-- Text div -->
+        <div id="copyText" class="select-text px-3 py-2 border border-gray-300 rounded-lg">
+          CA : DXjJwpwzRZkkYNk1JDJmsBbJxwQkGRgHTT4kHbbbpump
+        </div>
+    
+        
+      </div>
   
       <div class="mx-auto mt-10 flex justify-center items-center gap-x-10">
         <a href="https://dexscreener.com/solana/havduueqisqbmmhucmjr9xj9v7c1v8adthrml5pvc2qk">
@@ -288,6 +293,18 @@
       });
     });
   </script>
+
+
+<script>
+  function copyToClipboard() {
+    const input = document.getElementById("copyText");
+    input.select();
+    input.setSelectionRange(0, 99999); // For mobile support
+    navigator.clipboard.writeText(input.value).then(() => {
+      alert("Copied: " + input.value);
+    });
+  }
+</script>
 
 <script>
   $(document).ready(function(){
